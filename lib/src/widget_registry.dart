@@ -31,6 +31,12 @@ class SDUIWidgetRegistry {
     }
   }
 
+  bool override(String type, SDUIWidgetFactory factory) {
+    _logger.i('Overriding widget: $type');
+    _factories[key] = factory;
+    return true;
+  }
+
   SDUIWidget? create(String type) {
     SDUIWidgetFactory? factory = _factories[type.toLowerCase()];
     return factory?.call();
